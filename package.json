@@ -1,0 +1,34 @@
+{
+  "name": "cbit-frontaiforge",
+  "version": "1.0.0",
+  "description": "CBIT-AiForge 智能问答前端 - Vue 3 + TypeScript + Vite",
+  "author": "Reneverland, CBIT, CUHK",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 9301",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "axios": "^1.6.8",
+    "pinia": "^2.1.7",
+    "lucide-vue-next": "^0.368.0",
+    "@vueuse/core": "^10.9.0",
+    "marked": "^12.0.2",
+    "dompurify": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/dompurify": "^3.0.5",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.4.5",
+    "vue-tsc": "^2.0.13",
+    "vite": "^5.2.8",
+    "tailwindcss": "^3.4.3",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "@types/marked": "^6.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules
+.git
+.gitignore
+.env*
+.vscode
+.idea
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+# 不排除dist，因为需要它来构建Docker镜像

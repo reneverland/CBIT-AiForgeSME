@@ -1,0 +1,37 @@
+server {
+    listen 9200;
+    server_name localhost;
+    
+    # 前端静态文件
+    location / {
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+        try_files $uri $uri/ /index.html;
+    }
+    
+    # API 代理到后端 - 使用环境变量动态配置
+    location /api/ {
+        # 后端API地址通过环境变量 BACKEND_API_URL 配置
+        # 局域网环境: http://127.0.0.1:5173 或 http://10.120.30.200:5173
+        # 外部环境: http://llmhi.com:5173
+        proxy_pass ${BACKEND_API_URL}/api/;
+        
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # 超时设置（RAG 检索可能较慢）
+        proxy_connect_timeout 300s;
+        proxy_send_timeout 300s;
+        proxy_read_timeout 300s;
+    }
+    
+    # 健康检查
+    location /health {
+        access_log off;
+        return 200 "healthy\n";
+        add_header Content-Type text/plain;
+    }
+}
+
