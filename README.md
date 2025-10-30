@@ -1,6 +1,6 @@
 # CBIT-AiForge SME Intelligent Assistant | SME 智能助手
 
-[![Build Status](https://github.com/coolxilian/CBIT-AiForgeSME/actions/workflows/deploy.yml/badge.svg)](https://github.com/coolxilian/CBIT-AiForgeSME/actions)
+[![Build Status](https://github.com/reneverland/CBIT-AiForgeSME/actions/workflows/deploy.yml/badge.svg)](https://github.com/reneverland/CBIT-AiForgeSME/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org)
 [![Vue.js](https://img.shields.io/badge/vue-3.4.21-4FC08D.svg?logo=vue.js)](https://vuejs.org)
@@ -99,7 +99,7 @@ CBIT-FrontAiForge/
 
 ```bash
 # Clone the repository
-git clone https://github.com/coolxilian/CBIT-AiForgeSME.git
+git clone https://github.com/reneverland/CBIT-AiForgeSME.git
 cd CBIT-AiForgeSME
 
 # Install dependencies
@@ -192,7 +192,7 @@ The project includes a GitHub Actions workflow for continuous integration and de
 
 ### Container Registry
 
-Docker images are published to: `ghcr.io/coolxilian/cbit-aiforgesme`
+Docker images are published to: `ghcr.io/reneverland/cbit-aiforgesme`
 
 ## 📦 Deployment Scripts
 
@@ -647,7 +647,7 @@ docker-compose build --no-cache
 
 ---
 
-**Repository**: https://github.com/coolxilian/CBIT-AiForgeSME
+**Repository**: https://github.com/reneverland/CBIT-AiForgeSME
 
 **Maintainer**: [Ren CBIT](https://github.com/reneverland/)
 
