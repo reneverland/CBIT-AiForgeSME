@@ -36,7 +36,7 @@ dist-ssr
 *~
 .cache
 
-# Documentation drafts (keep only README.md)
+# Documentation drafts (keep only README.md and DEPLOYMENT_GUIDE.md)
 *总结.md
 *说明.md
 *指南.md
@@ -45,12 +45,12 @@ dist-ssr
 *修复*.md
 *FIX*.md
 *SUMMARY*.md
-*GUIDE*.md
 *CONTEXT*.md
 *OPTIMIZATION*.md
 *FEATURE*.md
 *THINKING*.md
 *.txt
+!DEPLOYMENT_GUIDE.md
 
 # Shell scripts (deployment scripts)
 *.sh
