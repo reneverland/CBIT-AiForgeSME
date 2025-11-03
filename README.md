@@ -124,15 +124,44 @@ npm run preview
 
 ### Docker Deployment
 
+#### Quick Start (Default Configuration)
+
 ```bash
-# Build and start containers
+# Clone repository
+git clone https://github.com/reneverland/CBIT-AiForgeSME.git
+cd CBIT-AiForgeSME
+
+# Deploy with default configuration (backend: http://127.0.0.1:9300)
 docker-compose up -d
 
+# Or use the quick deployment script
+bash quick-deploy.sh
+```
+
+#### Custom Configuration
+
+```bash
+# 1. Create environment configuration
+cp .env.example .env.local
+
+# 2. Edit configuration (update BACKEND_API_URL)
+nano .env.local
+
+# 3. Deploy
+docker-compose up -d
+```
+
+#### Management Commands
+
+```bash
 # View logs
-docker-compose logs -f
+docker-compose logs -f frontaiforge
 
 # Stop containers
 docker-compose down
+
+# Restart containers
+docker-compose restart
 
 # Rebuild containers
 docker-compose build --no-cache
@@ -442,15 +471,44 @@ npm run preview
 
 ### Docker 部署
 
+#### 快速开始（默认配置）
+
 ```bash
-# 构建并启动容器
+# 克隆仓库
+git clone https://github.com/reneverland/CBIT-AiForgeSME.git
+cd CBIT-AiForgeSME
+
+# 使用默认配置部署（后端: http://127.0.0.1:9300）
 docker-compose up -d
 
+# 或使用快速部署脚本
+bash quick-deploy.sh
+```
+
+#### 自定义配置
+
+```bash
+# 1. 创建环境配置文件
+cp .env.example .env.local
+
+# 2. 编辑配置（更新 BACKEND_API_URL）
+nano .env.local
+
+# 3. 部署
+docker-compose up -d
+```
+
+#### 管理命令
+
+```bash
 # 查看日志
-docker-compose logs -f
+docker-compose logs -f frontaiforge
 
 # 停止容器
 docker-compose down
+
+# 重启容器
+docker-compose restart
 
 # 重新构建容器
 docker-compose build --no-cache
