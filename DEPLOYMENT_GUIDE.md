@@ -29,13 +29,13 @@ cd /path/to/your/workspace
 git clone https://github.com/reneverland/CBIT-AiForgeSME.git
 cd CBIT-AiForgeSME
 
-# 2. Configure environment variables
-# Copy the example file and edit it
-cp .env.example .env.local
-nano .env.local
+# 2. Configure backend API URL
+# Edit .env file and update BACKEND_API_URL
+nano .env
 
-# Update BACKEND_API_URL to your backend server address
-# Example: BACKEND_API_URL=http://YOUR_SERVER_IP:9300
+# Change this line to your backend server:
+# BACKEND_API_URL=http://YOUR_SERVER_IP:PORT
+# Example: BACKEND_API_URL=http://llmhi.com:5173
 
 # 3. Build and start services
 docker-compose up -d
@@ -45,16 +45,22 @@ docker-compose ps
 docker-compose logs -f frontaiforge
 ```
 
-**Quick Start (Using Default Configuration):**
-
-If you want to use the default backend address (http://127.0.0.1:9300), you can skip step 2:
+**Quick Deployment with Script:**
 
 ```bash
-# Clone and start with default configuration
+# Clone repository
 git clone https://github.com/reneverland/CBIT-AiForgeSME.git
 cd CBIT-AiForgeSME
-docker-compose up -d
+
+# Edit .env file first
+nano .env  # Update BACKEND_API_URL
+
+# Run quick deploy script
+bash quick-deploy.sh
 ```
+
+**Important Note:**
+The repository includes a `.env` file with default configuration. You **MUST** edit this file and update `BACKEND_API_URL` to match your backend server before deployment.
 
 #### Method 2: Deploy from GitHub Container Registry
 
@@ -273,13 +279,13 @@ cd /path/to/your/workspace
 git clone https://github.com/reneverland/CBIT-AiForgeSME.git
 cd CBIT-AiForgeSME
 
-# 2. 配置环境变量
-# 复制示例文件并编辑
-cp .env.example .env.local
-nano .env.local
+# 2. 配置后端 API 地址
+# 编辑 .env 文件并更新 BACKEND_API_URL
+nano .env
 
-# 更新 BACKEND_API_URL 为您的后端服务器地址
-# 示例: BACKEND_API_URL=http://YOUR_SERVER_IP:9300
+# 修改此行为您的后端服务器地址：
+# BACKEND_API_URL=http://YOUR_SERVER_IP:PORT
+# 示例: BACKEND_API_URL=http://llmhi.com:5173
 
 # 3. 构建并启动服务
 docker-compose up -d
@@ -289,16 +295,22 @@ docker-compose ps
 docker-compose logs -f frontaiforge
 ```
 
-**快速开始（使用默认配置）：**
-
-如果您想使用默认后端地址（http://127.0.0.1:9300），可以跳过步骤 2：
+**使用脚本快速部署：**
 
 ```bash
-# 克隆并使用默认配置启动
+# 克隆仓库
 git clone https://github.com/reneverland/CBIT-AiForgeSME.git
 cd CBIT-AiForgeSME
-docker-compose up -d
+
+# 先编辑 .env 文件
+nano .env  # 更新 BACKEND_API_URL
+
+# 运行快速部署脚本
+bash quick-deploy.sh
 ```
+
+**重要提示：**
+仓库中包含一个默认配置的 `.env` 文件。部署前，您**必须**编辑此文件并将 `BACKEND_API_URL` 更新为您的后端服务器地址。
 
 #### 方式二：从 GitHub Container Registry 部署
 

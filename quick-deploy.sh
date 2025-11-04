@@ -12,27 +12,53 @@ echo "CBIT-AiForge SME - 快速部署脚本"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
-# Check if .env.local exists
-if [ -f ".env.local" ]; then
-    echo "✓ Found existing .env.local file"
-    echo "✓ 发现已存在的 .env.local 文件"
+# Check and configure environment variables
+if [ -f ".env" ]; then
+    echo "✓ Found .env file"
+    echo "✓ 发现 .env 文件"
+    
+    # Check current backend URL
+    CURRENT_BACKEND=$(grep "^BACKEND_API_URL=" .env | cut -d'=' -f2)
+    echo ""
+    echo "📝 Current backend URL | 当前后端地址:"
+    echo "   $CURRENT_BACKEND"
+    echo ""
+    
+    # Check if it's still the default value
+    if [ "$CURRENT_BACKEND" = "http://127.0.0.1:9300" ]; then
+        echo "⚠  WARNING: Using default backend address!"
+        echo "⚠  警告：正在使用默认后端地址！"
+        echo ""
+        echo "If your backend is on a different server, please update .env file:"
+        echo "如果您的后端在其他服务器上，请更新 .env 文件："
+        echo "  nano .env"
+        echo ""
+        echo "Example | 示例:"
+        echo "  BACKEND_API_URL=http://llmhi.com:5173"
+        echo ""
+        read -p "Continue with current backend? (y/n) / 使用当前后端继续？(y/n): " -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            echo "Please edit .env file and run this script again."
+            echo "请编辑 .env 文件后重新运行此脚本。"
+            exit 0
+        fi
+    fi
 else
-    echo "⚠ .env.local not found, creating from example..."
-    echo "⚠ 未找到 .env.local，从示例文件创建..."
+    echo "❌ Error: .env file not found!"
+    echo "❌ 错误：找不到 .env 文件！"
+    echo ""
+    echo "Creating .env from example..."
+    echo "从示例创建 .env..."
     
     if [ -f ".env.example" ]; then
-        cp .env.example .env.local
-        echo "✓ Created .env.local from .env.example"
-        echo "✓ 已从 .env.example 创建 .env.local"
+        cp .env.example .env
+        echo "✓ Created .env from .env.example"
+        echo "✓ 已从 .env.example 创建 .env"
         echo ""
-        echo "📝 Using default backend: http://127.0.0.1:9300"
-        echo "📝 使用默认后端地址: http://127.0.0.1:9300"
-        echo ""
-        echo "To change backend URL, edit .env.local file:"
-        echo "要修改后端地址，请编辑 .env.local 文件："
-        echo "  nano .env.local"
-        echo ""
-        read -p "Press Enter to continue or Ctrl+C to abort... / 按回车继续或 Ctrl+C 取消..." 
+        echo "⚠  Please edit .env file to configure your backend URL"
+        echo "⚠  请编辑 .env 文件配置您的后端地址"
+        exit 1
     else
         echo "❌ Error: .env.example not found!"
         echo "❌ 错误：找不到 .env.example 文件！"

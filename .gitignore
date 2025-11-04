@@ -13,13 +13,14 @@ dist
 dist-ssr
 *.local
 
-# Environment files
-.env
+# Environment files (allow .env and .env.example, exclude others)
 .env.local
 .env.production
 .env.*.local
+.env.backup
 
-# Allow example environment file
+# Allow these environment files
+!.env
 !.env.example
 
 # Editor directories and files

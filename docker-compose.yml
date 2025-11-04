@@ -20,12 +20,8 @@ services:
     restart: unless-stopped
     
     # 环境变量配置
-    # 可选：如果存在 .env.local 文件，则使用其中的配置
-    # 如果不存在，则使用下面 environment 中的默认值
-    # env_file:
-    #   - .env.local
-    
-    # 默认环境变量（可根据需要修改）
+    # Docker Compose 会自动读取 .env 文件（如果存在）
+    # 环境变量优先级: .env.local > .env > 默认值
     environment:
       - BACKEND_API_URL=${BACKEND_API_URL:-http://127.0.0.1:9300}
       - VITE_APP_TITLE=${VITE_APP_TITLE:-SME Intelligent Assistant}
