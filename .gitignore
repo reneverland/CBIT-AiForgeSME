@@ -54,6 +54,7 @@ dist-ssr
 *THINKING*.md
 *.txt
 !DEPLOYMENT_GUIDE.md
+!TROUBLESHOOTING.md
 
 # Shell scripts (deployment scripts)
 *.sh
@@ -61,6 +62,7 @@ dist-ssr
 !restart.sh
 !rebuild.sh
 !quick-deploy.sh
+!fix-502.sh
 
 # Docker override files
 docker-compose.override.yml
