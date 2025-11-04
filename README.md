@@ -138,22 +138,16 @@ docker-compose up -d
 bash quick-deploy.sh
 ```
 
-#### Custom Backend Configuration
-
-**IMPORTANT:** Edit `.env` file to configure your backend API URL before deployment.
+#### Custom Configuration
 
 ```bash
-# 1. Clone and enter project directory
-git clone https://github.com/reneverland/CBIT-AiForgeSME.git
-cd CBIT-AiForgeSME
+# 1. Create environment configuration
+cp .env.example .env.local
 
-# 2. Edit environment configuration
-nano .env
+# 2. Edit configuration (update BACKEND_API_URL)
+nano .env.local
 
-# 3. Update BACKEND_API_URL to your backend server
-#    Example: BACKEND_API_URL=http://llmhi.com:5173
-
-# 4. Deploy
+# 3. Deploy
 docker-compose up -d
 ```
 
@@ -491,22 +485,16 @@ docker-compose up -d
 bash quick-deploy.sh
 ```
 
-#### 自定义后端配置
-
-**重要提示：** 部署前请编辑 `.env` 文件配置您的后端 API 地址。
+#### 自定义配置
 
 ```bash
-# 1. 克隆并进入项目目录
-git clone https://github.com/reneverland/CBIT-AiForgeSME.git
-cd CBIT-AiForgeSME
+# 1. 创建环境配置文件
+cp .env.example .env.local
 
-# 2. 编辑环境配置
-nano .env
+# 2. 编辑配置（更新 BACKEND_API_URL）
+nano .env.local
 
-# 3. 更新 BACKEND_API_URL 为您的后端服务器地址
-#    示例: BACKEND_API_URL=http://llmhi.com:5173
-
-# 4. 部署
+# 3. 部署
 docker-compose up -d
 ```
 

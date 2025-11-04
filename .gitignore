@@ -13,14 +13,13 @@ dist
 dist-ssr
 *.local
 
-# Environment files (allow .env and .env.example, exclude others)
+# Environment files
+.env
 .env.local
 .env.production
 .env.*.local
-.env.backup
 
-# Allow these environment files
-!.env
+# Allow example environment file
 !.env.example
 
 # Editor directories and files
@@ -68,11 +67,10 @@ docker-compose.override.yml
 docker-compose.*.yml
 !docker-compose.yml
 
+# Dockerfile variants
+Dockerfile.local
+Dockerfile.*.bak
 # Allow main Dockerfiles
 !Dockerfile
 !Dockerfile.host
-
-# Ignore other Dockerfile variants
-Dockerfile.local
-Dockerfile.*.bak
 
