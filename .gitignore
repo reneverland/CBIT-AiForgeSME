@@ -66,6 +66,12 @@ dist-ssr
 docker-compose.override.yml
 docker-compose.*.yml
 !docker-compose.yml
-Dockerfile.*
+
+# Allow main Dockerfiles
 !Dockerfile
+!Dockerfile.host
+
+# Ignore other Dockerfile variants
+Dockerfile.local
+Dockerfile.*.bak
 
