@@ -31,7 +31,7 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 
 # 设置默认环境变量（可以被docker-compose覆盖）
-ENV BACKEND_API_URL=http://127.0.0.1:5173
+ENV BACKEND_API_URL=http://127.0.0.1:9300
 
 # 创建启动脚本，使用envsubst替换环境变量
 RUN echo '#!/bin/sh' > /docker-entrypoint.sh && \

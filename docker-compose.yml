@@ -27,7 +27,7 @@ services:
     
     # 默认环境变量（可根据需要修改）
     environment:
-      - BACKEND_API_URL=${BACKEND_API_URL:-http://127.0.0.1:9300}
+      - BACKEND_API_URL=${BACKEND_API_URL:-http://llmhi.com:9300}
       - VITE_APP_TITLE=${VITE_APP_TITLE:-SME Intelligent Assistant}
       - VITE_APP_VERSION=${VITE_APP_VERSION:-1.0.0}
     
@@ -42,27 +42,32 @@ services:
 # 使用说明 | Usage Instructions
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 
+# ⭐ 推荐方式 - 交互式部署（适合首次部署和其他服务器）：
+#    ./deploy-interactive.sh
+#    脚本会自动引导您：
+#    - 选择后端地址（域名/内网IP/自定义）
+#    - 生成配置文件
+#    - 测试后端连接
+#    - 自动构建和启动
+#
 # 📦 快速开始（使用默认配置）：
 #    docker-compose up -d
-#    默认后端地址: http://127.0.0.1:9300
+#    默认后端地址: http://llmhi.com:9300
 # 
 # 🔧 自定义后端地址：
 #    方式1 - 使用环境变量：
 #    BACKEND_API_URL=http://YOUR_BACKEND_IP:9300 docker-compose up -d
 #
-#    方式2 - 使用配置文件（推荐）：
-#    1. 创建环境配置文件:
-#       cp .env.example .env.local
-#    2. 编辑 .env.local 修改 BACKEND_API_URL
-#    3. 取消注释上面的 env_file 部分
-#    4. 启动服务:
+#    方式2 - 使用配置文件：
+#    1. 创建 .env 文件:
+#       echo "BACKEND_API_URL=http://YOUR_BACKEND_IP:9300" > .env
+#    2. 启动服务:
 #       docker-compose up -d
 # 
-# 🌐 生产环境部署：
-#    1. 创建生产配置: cp .env.example .env.production
-#    2. 编辑 .env.production 配置后端地址
-#    3. 使用生产配置启动:
-#       docker-compose --env-file .env.production up -d
+# 🌐 常见配置示例：
+#    - 域名访问（推荐）：BACKEND_API_URL=http://llmhi.com:9300
+#    - 内网IP访问：BACKEND_API_URL=http://10.120.30.200:9300
+#    - 本机访问：BACKEND_API_URL=http://127.0.0.1:9300
 # 
 # 📝 环境变量说明：
 #    - BACKEND_API_URL  : 后端API地址（必需）
