@@ -205,7 +205,7 @@ export const useChatStore = defineStore('chat', () => {
           }
           isLoading.value = false
         },
-        // onMetadata: 🔥 实时处理 metadata（特别是 Q&A 建议）
+        // onMetadata: 实时处理 metadata（仅保存，不立即显示建议）
         (metadata: any) => {
           console.log('🎯 实时接收到 metadata:', metadata)
           
@@ -214,17 +214,13 @@ export const useChatStore = defineStore('chat', () => {
             messages.value[messageIndex].content = ''
           }
           
-          // 立即处理 Q&A 建议
-          if (metadata.needs_confirmation === true && metadata.suggested_questions?.length > 0) {
-            console.log('💡 立即显示 Q&A 建议卡片')
-            needsConfirmation.value = true
-            pendingSuggestions.value = metadata.suggested_questions
-            
-            // 保存 metadata 到消息
-            if (messageIndex < messages.value.length) {
-              messages.value[messageIndex].metadata = metadata
-            }
+          // 🔧 修复：只保存 metadata，不立即显示建议问题
+          // 建议问题将在 onComplete 中处理，确保先显示回答再显示建议
+          if (messageIndex < messages.value.length) {
+            messages.value[messageIndex].metadata = metadata
           }
+          
+          console.log('📝 metadata 已保存，建议问题将在回答完成后显示')
         }
       )
 

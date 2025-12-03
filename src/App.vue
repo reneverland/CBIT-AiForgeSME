@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <DisclaimerModal />
     <ChatView />
   </div>
 </template>
@@ -7,6 +8,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import ChatView from '@/views/ChatView.vue'
+import DisclaimerModal from '@/components/DisclaimerModal.vue'
 import { useThemeStore } from '@/stores/theme'
 
 // 初始化主题
