@@ -42,11 +42,21 @@
                    : 'text-left',
                  isDark 
                    ? 'prose-invert text-gpt-dark-text' 
-                   : 'text-gray-800',
-                 message.content === '思考中...' ? 'thinking-text' : ''
+                   : 'text-gray-800'
                ]"
           >
-            <div v-html="renderedContent"></div>
+            <!-- 思考中动态效果 -->
+            <div v-if="message.content === '思考中...'" class="thinking-animation">
+              <span class="thinking-icon">🤔</span>
+              <span class="thinking-text-animated">正在思考</span>
+              <span class="thinking-dots">
+                <span class="dot">.</span>
+                <span class="dot">.</span>
+                <span class="dot">.</span>
+              </span>
+            </div>
+            <!-- 正常内容 -->
+            <div v-else v-html="renderedContent"></div>
             <!-- 🔥 打字机光标效果（仅在流式生成时显示） -->
             <span v-if="message.role === 'assistant' && isStreaming" 
                   class="typing-cursor"
@@ -346,17 +356,85 @@ function cancelFeedback() {
 </script>
 
 <style scoped>
-/* 🔧 思考中文字动画效果 */
-:deep(.thinking-text) {
-  color: #8b5cf6 !important;
-  animation: thinking-pulse 1.5s ease-in-out infinite;
+/* 🔧 思考中动态动画效果 */
+.thinking-animation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.thinking-icon {
+  font-size: 1.5rem;
+  animation: thinking-bounce 1s ease-in-out infinite;
+}
+
+@keyframes thinking-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.thinking-text-animated {
+  font-weight: 500;
+  color: #7c3aed;
+  animation: thinking-pulse 2s ease-in-out infinite;
+}
+
+.dark .thinking-text-animated {
+  color: #a78bfa;
 }
 
 @keyframes thinking-pulse {
   0%, 100% {
-    opacity: 0.6;
+    opacity: 0.7;
   }
   50% {
+    opacity: 1;
+  }
+}
+
+.thinking-dots {
+  display: flex;
+  gap: 2px;
+}
+
+.thinking-dots .dot {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #7c3aed;
+  animation: dot-wave 1.4s ease-in-out infinite;
+}
+
+.dark .thinking-dots .dot {
+  color: #a78bfa;
+}
+
+.thinking-dots .dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.thinking-dots .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.thinking-dots .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-wave {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-6px);
     opacity: 1;
   }
 }
