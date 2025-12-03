@@ -442,8 +442,8 @@ function cancelFeedback() {
 }
 
 .dark :deep(.section-title) {
-  color: #a78bfa;
-  border-bottom-color: #a78bfa;
+  color: #fbbf24;
+  border-bottom-color: #fbbf24;
 }
 
 /* 百分比徽章 */
@@ -507,7 +507,8 @@ function cancelFeedback() {
 }
 
 .dark :deep(.prose strong) {
-  color: #f3f4f6;
+  color: #fbbf24;
+  font-weight: 700;
 }
 
 :deep(.prose ul),

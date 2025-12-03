@@ -1,8 +1,8 @@
 <template>
   <div v-if="showModal" 
        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 animate-fade-in">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-         :class="isDark ? 'bg-gpt-dark-bg-alt border-2 border-gpt-dark-border' : 'bg-white'">
+    <div class="rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+         :class="isDark ? 'bg-gray-800 border-2 border-gray-600' : 'bg-white'">
       <!-- 顶部图标和标题 -->
       <div class="p-6 pb-4">
         <div class="flex items-center justify-center mb-4">
@@ -11,11 +11,11 @@
           </div>
         </div>
         <h2 class="text-2xl font-bold text-center mb-2"
-            :class="isDark ? 'text-gpt-dark-text' : 'text-gray-900'">
+            :class="isDark ? 'text-white' : 'text-gray-900'">
           欢迎使用 SME AI Assistant
         </h2>
         <p class="text-center text-sm"
-           :class="isDark ? 'text-gpt-dark-text-secondary' : 'text-gray-600'">
+           :class="isDark ? 'text-gray-300' : 'text-gray-600'">
           香港中文大学（深圳）经管学院智能助手
         </p>
       </div>
@@ -24,28 +24,28 @@
       <div class="px-6 pb-6 space-y-4">
         <!-- 中文版本 -->
         <div class="p-4 rounded-lg"
-             :class="isDark ? 'bg-gpt-dark-bg' : 'bg-gray-50'">
+             :class="isDark ? 'bg-gray-700' : 'bg-gray-50'">
           <h3 class="font-semibold mb-2 flex items-center gap-2"
-              :class="isDark ? 'text-gpt-dark-text' : 'text-gray-900'">
+              :class="isDark ? 'text-white' : 'text-gray-900'">
             <i class="ri-alert-line text-amber-500"></i>
             重要声明
           </h3>
           <p class="text-sm leading-relaxed"
-             :class="isDark ? 'text-gpt-dark-text' : 'text-gray-700'">
+             :class="isDark ? 'text-gray-200' : 'text-gray-700'">
             请将该人工智能的回复作为参考，不代表香港中文大学（深圳）经管学院的官方观点。
           </p>
         </div>
 
         <!-- 英文版本 -->
         <div class="p-4 rounded-lg"
-             :class="isDark ? 'bg-gpt-dark-bg' : 'bg-gray-50'">
+             :class="isDark ? 'bg-gray-700' : 'bg-gray-50'">
           <h3 class="font-semibold mb-2 flex items-center gap-2"
-              :class="isDark ? 'text-gpt-dark-text' : 'text-gray-900'">
+              :class="isDark ? 'text-white' : 'text-gray-900'">
             <i class="ri-file-shield-line text-blue-500"></i>
             Data Processing Agreement
           </h3>
           <p class="text-sm leading-relaxed"
-             :class="isDark ? 'text-gpt-dark-text' : 'text-gray-700'">
+             :class="isDark ? 'text-gray-200' : 'text-gray-700'">
             By using this service, you agree to the processing of your data by our language model, 
             which may be used for further optimization of our model (e.g., vector databases, etc.).
           </p>
@@ -53,7 +53,7 @@
 
         <!-- 同意协议复选框 -->
         <div class="flex items-start gap-3 p-4 rounded-lg border-2"
-             :class="isDark ? 'border-gpt-dark-border bg-gpt-dark-bg' : 'border-purple-200 bg-purple-50'">
+             :class="isDark ? 'border-gray-600 bg-gray-700' : 'border-purple-200 bg-purple-50'">
           <input 
             id="agree-checkbox"
             v-model="agreed"
@@ -62,7 +62,7 @@
           />
           <label for="agree-checkbox" 
                  class="text-sm cursor-pointer"
-                 :class="isDark ? 'text-gpt-dark-text' : 'text-gray-700'">
+                 :class="isDark ? 'text-gray-200' : 'text-gray-700'">
             我已阅读并同意上述声明和数据处理协议 / I have read and agree to the above disclaimer and data processing agreement
           </label>
         </div>
