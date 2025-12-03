@@ -116,7 +116,8 @@
                           {{ idx + 1 }}
                         </span>
                         <div class="flex-1">
-                          <p class="font-medium group-hover:text-cuhk-purple transition-colors duration-200">
+                          <p class="font-medium transition-colors duration-200"
+                             :class="isDark ? 'text-gpt-dark-text group-hover:text-cuhk-light' : 'text-gray-800 group-hover:text-cuhk-purple'">
                             {{ suggestion.question }}
                           </p>
                           <p class="text-xs mt-1 transition-colors duration-200"
